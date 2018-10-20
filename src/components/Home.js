@@ -55,7 +55,7 @@ class Home extends Component {
         		<label>
 				<p>Paste the iTunes Preview URL below:</p>
 				</label>
-				<p><input id="previewURL" type="text" value={this.state.input} onChange={this.handleChange} /></p>
+				<p><input autoFocus id="previewURL" type="text" value={this.state.input} onChange={this.handleChange} /></p>
         		<p><input type="submit" value="Submit" /></p>
       		</form>
 				<p>Name: {this.state.appDetails.trackName}</p>
@@ -69,4 +69,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Home;
