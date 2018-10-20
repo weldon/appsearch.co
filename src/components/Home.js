@@ -32,14 +32,14 @@ class Home extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		const appId = getAppId(this.state.input);
-		const lookupURL = "https://itunes.apple.com/lookup?id=" + appId;
+		let appId = getAppId(this.state.input);
+		let lookupURL = "https://itunes.apple.com/lookup?id=" + appId;
 		jsonp(lookupURL, null, (err, data) => {
 		   if (err) {
 			 console.error(err.message);
 		   } else {
 			 this.setState({appDetails: data.results[0]});
-			 const appDetails = this.state.appDetails;
+			 let appDetails = this.state.appDetails;
 			this.setState(() => ({
 			}))
 		   }
@@ -51,11 +51,11 @@ class Home extends Component {
   	const {status} = this.state;
     return (
       <div className="Home">
-                <form onSubmit={this.handleSubmit}>
+                <form id="previewURLForm" onSubmit={this.handleSubmit}>
         		<label>
 				<p>Paste the iTunes Preview URL below:</p>
-				<p><input id="previewURL" type="text" size="60" value={this.state.input} onChange={this.handleChange} /></p>
 				</label>
+				<p><input id="previewURL" type="text" value={this.state.input} onChange={this.handleChange} /></p>
         		<p><input type="submit" value="Submit" /></p>
       		</form>
 				<p>Name: {this.state.appDetails.trackName}</p>
