@@ -4,7 +4,7 @@ import jsonp from "jsonp";
 
 function getAppId(previewURL) {
 	try {
-		const re = /(?<=\/id)(\d+)/;
+		const re = /\d{6,}/;
 		return previewURL.match(re)[0];
 
 	} catch(err) {
