@@ -3,9 +3,14 @@ import "../styles/Home.css";
 import jsonp from "jsonp";
 
 function getAppId(previewURL) {
-	const re = /(?<=\/id)(\d+)/;
-	return previewURL.match(re)[0];
+	try {
+		const re = /(?<=\/id)(\d+)/;
+		return previewURL.match(re)[0];
+
+	} catch(err) {
+		return err.messageZz;
 	}
+}
 
 class Home extends Component {
 
