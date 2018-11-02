@@ -1,17 +1,141 @@
+.Home {
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  display: inline-block;
+}
+
 .Home .lander {
-  padding: 80px 0;
-  text-align: center;
+	padding: 100px 0;
 }
 
 .Home .lander h1 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
 }
 
 .Home .lander p {
-  color: #999;
+	color: #999;
 }
 
 #previewURL {
-	width: 80%;
+	width: 100%;
 }
+
+#previewURL .form {
+  text-align: center;
+}
+
+img.appIcon {
+	border-radius: 22.5%;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* ios icon gallery
+   The general idea here is that every icon is wrapped in a <span.icon-wrapper>
+   This is used to position a pseudo element over the <img.icon> which acts
+   as the mask and/or border for the icon.
+   We display a different mask based on whether the icon was pre- or post- iOS 7
+   as they used different border-radii and display styles.
+   ========================================================================== */
+
+/* the mask */
+/*.Home .icon-wrapper:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}*/
+
+
+/* Post iOS 7 */
+/* For browsers that don't support modern masking, mask the <img.icon> with 
+   a border radius and the psuedo-element mask with a transparent border. */
+.Home {
+  border-radius: 22.5%;
+}
+
+.Home .icon-wrapper:after {
+  border-radius: 22.5%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+/* For browsers that can mask, you get the squircle and a 1px border */
+@supports (mask-size: cover) or (-webkit-mask-size: cover) {
+  .Home .icon--post-ios7 {
+    border-radius: 0; /* Override the above default */
+    display: block;
+    max-width: 100%;
+    height: auto;
+    -webkit-mask-image: url(/images/ios-mask.svg);
+    -webkit-mask-size: cover;
+    mask-image: url(/images/ios-mask.svg);
+    mask-size: cover;
+  }
+
+  .Home .icon-wrapper--post-ios7:after {
+    /* Override the above default */
+    box-shadow: none;
+    border-radius: 0;
+    background-size: cover;
+  }
+
+  /* Add a pseudo element with a mask in it that overlays the icon */
+  .Home .icon-wrapper--post-ios7.icon-wrapper--512:after {
+    background-image: url("/images/ios-mask-border-512.svg");
+  }
+  .Home .icon-wrapper--post-ios7.icon-wrapper--256:after {
+    background-image: url("/images/ios-mask-border-256.svg");
+  }
+  .Home .icon-wrapper--post-ios7.icon-wrapper--128:after {
+    background-image: url("/images/ios-mask-border-128.svg");
+  }
+  .Home .icon-wrapper--post-ios7.icon-wrapper--64:after {
+    background-image: url("/images/ios-mask-border-64.svg");
+  }
+}
+
+/* grid layout for app results */
+.appList {
+	display: grid;
+	grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.appDetails {
+	display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: 128px auto;
+
+
+}
+
+.appIcon {
+	grid-column: 1;
+	max-width: 128px;
+}
+
+.appText {
+	grid-column: 2;
+	text-align: left;
+}
+
+/* styling for app listings */
+.product-header-title {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: .018em;
+  font-family: "SF Pro Display","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.appStoreLink {
+    display:inline-block;
+    overflow:hidden;
+    background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-sm.svg) no-repeat;
+    width:60px;
+    height:15px;
+  }
