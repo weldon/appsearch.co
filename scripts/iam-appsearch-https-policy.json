@@ -9,7 +9,9 @@
         "s3:GetObject",
         "s3:PutObject",
         "s3:DeleteObject",
-        "s3:GetBucketLocation"
+        "s3:GetBucketLocation",
+        "s3:GetBucketPolicy",
+        "s3:PutBucketPolicy"
       ],
       "Resource": [
         "arn:aws:s3:::appsearch.co",
@@ -34,6 +36,7 @@
       "Action": [
         "cloudfront:ListDistributions",
         "cloudfront:GetDistribution",
+        "cloudfront:GetDistributionConfig",
         "cloudfront:CreateDistribution",
         "cloudfront:UpdateDistribution",
         "cloudfront:CreateInvalidation",
