@@ -1,0 +1,186 @@
+=== AppSearch WSL setup ===
+Working directory: /home/weldon/Projects/appsearch.co
+Date: Sun Aug 30 01:18:27 MDT 2026
+=== Installing Node.js 22 ===
+[38;5;79m2026-08-30 01:18:32 - Installing pre-requisites[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+112 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+ca-certificates set to manually installed.
+gnupg is already the newest version (2.4.4-2ubuntu17.4).
+gnupg set to manually installed.
+The following additional packages will be installed:
+  apt apt-utils libapt-pkg6.0t64 libcurl3t64-gnutls libcurl4t64
+Suggested packages:
+  apt-doc aptitude | synaptic | wajig dpkg-dev powermgmt-base
+The following NEW packages will be installed:
+  apt-transport-https
+The following packages will be upgraded:
+  apt apt-utils curl libapt-pkg6.0t64 libcurl3t64-gnutls libcurl4t64
+6 upgraded, 1 newly installed, 0 to remove and 106 not upgraded.
+Need to get 3484 kB of archives.
+After this operation, 50.2 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libapt-pkg6.0t64 amd64 2.8.3 [985 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 apt amd64 2.8.3 [1376 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 apt-utils amd64 2.8.3 [216 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 apt-transport-https all 2.8.3 [3970 B]
+Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.13 [226 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.13 [343 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.13 [335 kB]
+Fetched 3484 kB in 2s (1786 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 40757 files and directories currently installed.)
+Preparing to unpack .../libapt-pkg6.0t64_2.8.3_amd64.deb ...
+Unpacking libapt-pkg6.0t64:amd64 (2.8.3) over (2.7.14build2) ...
+Setting up libapt-pkg6.0t64:amd64 (2.8.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 40757 files and directories currently installed.)
+Preparing to unpack .../archives/apt_2.8.3_amd64.deb ...
+Unpacking apt (2.8.3) over (2.7.14build2) ...
+Setting up apt (2.8.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 40757 files and directories currently installed.)
+Preparing to unpack .../apt-utils_2.8.3_amd64.deb ...
+Unpacking apt-utils (2.8.3) over (2.7.14build2) ...
+Selecting previously unselected package apt-transport-https.
+Preparing to unpack .../apt-transport-https_2.8.3_all.deb ...
+Unpacking apt-transport-https (2.8.3) ...
+Preparing to unpack .../curl_8.5.0-2ubuntu10.13_amd64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.13) over (8.5.0-2ubuntu10.11) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.13_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.13) over (8.5.0-2ubuntu10.11) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.13_amd64.deb ...
+Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.13) over (8.5.0-2ubuntu10.11) ...
+Setting up apt-utils (2.8.3) ...
+Setting up apt-transport-https (2.8.3) ...
+Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.13) ...
+Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.13) ...
+Setting up curl (8.5.0-2ubuntu10.13) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Get:1 https://deb.nodesource.com/node_22.x nodistro InRelease [12.1 kB]
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Get:3 https://deb.nodesource.com/node_22.x nodistro/main amd64 Packages [12.0 kB]
+Hit:4 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Fetched 24.2 kB in 1s (29.1 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+106 packages can be upgraded. Run 'apt list --upgradable' to see them.
+[1;34m2026-08-30 01:18:42 - Repository configured successfully.[0m
+[38;5;79m2026-08-30 01:18:42 - To install Node.js, run: apt install nodejs -y[0m
+[38;5;79m2026-08-30 01:18:42 - You can use N|solid Runtime as a node.js alternative[0m
+[1;32m2026-08-30 01:18:42 - To install N|solid Runtime, run: apt install nsolid -y 
+[0m
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  nodejs
+0 upgraded, 1 newly installed, 0 to remove and 106 not upgraded.
+Need to get 37.8 MB of archives.
+After this operation, 236 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_22.x nodistro/main amd64 nodejs amd64 22.23.2-1nodesource1 [37.8 MB]
+Fetched 37.8 MB in 1s (32.3 MB/s)
+Selecting previously unselected package nodejs.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 40761 files and directories currently installed.)
+Preparing to unpack .../nodejs_22.23.2-1nodesource1_amd64.deb ...
+Unpacking nodejs (22.23.2-1nodesource1) ...
+Setting up nodejs (22.23.2-1nodesource1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Node: v22.23.2
+npm:  10.9.8
+=== npm install ===
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 178 packages, and audited 179 packages in 14s
+
+31 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm notice
+npm notice New major version of npm available! 10.9.8 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+=== npm test ===
+
+> appsearch-client@0.2.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/weldon/Projects/appsearch.co
+
+ ✓ src/services/appStoreSearch.test.ts (7 tests) 6ms
+ ❯ src/pages/HomePage.test.tsx (3 tests | 1 failed) 350ms
+   ✓ HomePage > shows a spinner while a search is in progress 228ms
+   ✓ HomePage > passes the selected platform to the search service 73ms
+   × HomePage > does not overwrite newer results with a stale response 49ms
+     → clear()` is only supported on editable elements.
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/routes.test.tsx [ src/routes.test.tsx ]
+Error: Failed to resolve import "../routes" from "src/routes.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/weldon/Projects/appsearch.co/src/routes.test.tsx:4:26
+  3  |  import { MemoryRouter } from "react-router-dom";
+  4  |  import { describe, expect, it } from "vitest";
+  5  |  import { AppRoutes } from "../routes";
+     |                             ^
+  6  |  describe("AppRoutes", () => {
+  7  |    it("renders the about page at /about", () => {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42658:41
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42655:16
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:40634:23
+ ❯ node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:40753:37
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:40680:7
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42453:18
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:35845:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/HomePage.test.tsx > HomePage > does not overwrite newer results with a stale response
+Error: clear()` is only supported on editable elements.
+ ❯ Object.clear node_modules/@testing-library/user-event/dist/esm/utility/clear.js:17:15
+ ❯ node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:35
+ ❯ Object.asyncWrapper node_modules/@testing-library/react/dist/pure.js:88:28
+ ❯ wrapAsync node_modules/@testing-library/user-event/dist/esm/setup/wrapAsync.js:6:24
+ ❯ Object.method [as clear] node_modules/@testing-library/user-event/dist/esm/setup/setup.js:83:16
+ ❯ src/pages/HomePage.test.tsx:100:16
+     98|     await user.click(screen.getByRole("button", { name: /search/i }));
+     99| 
+    100|     await user.clear(screen.getByLabelText(/enter an app name below/i)…
+       |                ^
+    101|     await user.type(screen.getByLabelText(/enter an app name below/i),…
+    102|     await user.click(screen.getByRole("button", { name: /search/i }));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  1 failed | 9 passed (10)
+   Start at  01:18:58
+   Duration  1.15s (transform 122ms, setup 184ms, collect 265ms, tests 356ms, environment 836ms, prepare 217ms)
+
