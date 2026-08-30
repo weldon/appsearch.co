@@ -53,6 +53,7 @@ Open [http://localhost:5173](http://localhost:5173).
 | `npm test`         | Run the test suite once              |
 | `npm run test:watch` | Run tests in watch mode            |
 | `npm run deploy:aws` | Build and sync `dist/` to S3       |
+| `npm run setup:https` | Request ACM cert and set up CloudFront HTTPS |
 
 ## Testing
 
@@ -64,12 +65,45 @@ Tests cover search URL construction, routing, platform selection behavior, stale
 
 ## Deployment (AWS S3 + CloudFront)
 
-Production is a static site in the **`appsearch.co`** S3 bucket, served through CloudFront.
+Production is a static site in the **`appsearch.co`** S3 bucket, served through **CloudFront with HTTPS**.
 
 **Prerequisites:**
 
 - AWS CLI configured (`aws sts get-caller-identity`)
+- TLS certificate (ACM) and CloudFront distribution for `appsearch.co`
+- DNS pointing `appsearch.co` at CloudFront
 - CloudFront custom error responses mapping **403** and **404** to `/index.html` (HTTP 200) for client-side routing
+
+### IAM permissions
+
+The deploy user (`appsearch-user`) needs S3 access plus ACM and CloudFront permissions for HTTPS setup. Attach the policy in `scripts/iam-appsearch-https-policy.json`, or ask your AWS admin to grant equivalent access.
+
+Deploy-only (no HTTPS setup):
+
+- `s3:ListBucket`, `s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`, `s3:GetBucketLocation` on `appsearch.co`
+
+HTTPS setup additionally requires:
+
+- **ACM** (must use **us-east-1** for CloudFront): `ListCertificates`, `RequestCertificate`, `DescribeCertificate`
+- **CloudFront**: `ListDistributions`, `GetDistribution`, `CreateDistribution`, `UpdateDistribution`, `CreateInvalidation`
+
+### Enable HTTPS (first time)
+
+S3 alone cannot serve HTTPS on a custom domain. Run the setup script to request an ACM certificate and create (or inspect) a CloudFront distribution that redirects HTTP to HTTPS:
+
+```bash
+npm run setup:https
+```
+
+The script prints **DNS validation records** for the certificate. Add those CNAME records at your DNS provider, then:
+
+```bash
+npm run setup:https -- --wait-for-cert
+```
+
+Finally, point `appsearch.co` DNS at the CloudFront distribution domain the script prints (Route 53 alias or external CNAME).
+
+### Deploy
 
 ```bash
 npm run deploy:aws
@@ -80,12 +114,6 @@ The deploy script syncs `dist/` to `s3://appsearch.co` with long-lived cache hea
 ```bash
 export CLOUDFRONT_DISTRIBUTION_ID="E1234567890"
 npm run deploy:aws
-```
-
-Override the bucket if needed:
-
-```bash
-S3_BUCKET=appsearch.co npm run deploy:aws
 ```
 
 ## Project structure
@@ -99,7 +127,8 @@ src/
   types/          TypeScript types
   test/           Vitest setup
 scripts/
-  deploy-aws.sh   S3 sync and CloudFront invalidation
+  deploy-aws.sh        S3 sync and CloudFront invalidation
+  setup-https.sh       ACM certificate + CloudFront HTTPS setup
 public/           Static assets (icons, manifest, iOS mask SVGs)
 dist/             Production build output (generated)
 ```

@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-: "${S3_BUCKET:?Set S3_BUCKET to your production bucket name}"
+S3_BUCKET="${S3_BUCKET:-appsearch.co}"
 
 SYNC_ARGS=(--delete)
 

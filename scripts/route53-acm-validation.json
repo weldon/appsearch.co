@@ -1,0 +1,18 @@
+{
+  "Comment": "ACM DNS validation for appsearch.co (apex only)",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_a9ac8c21d294c2569777e8edf9305b63.appsearch.co.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_9b26dd14ab5d85e0601865826763448a.tljzshvwok.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}
