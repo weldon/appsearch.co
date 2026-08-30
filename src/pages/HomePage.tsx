@@ -48,6 +48,22 @@ export function HomePage() {
     }
   }, []);
 
+  const handleSearchSubmit = () => {
+    const trimmed = term.trim();
+
+    if (!trimmed) {
+      setPlatformWarning("Enter a search term before selecting a platform.");
+      return;
+    }
+
+    if (!selectedPlatform) {
+      setPlatformWarning("Select a platform to run your search.");
+      return;
+    }
+
+    void runSearch(trimmed, selectedPlatform);
+  };
+
   const handlePlatformSelect = (platform: PlatformKey) => {
     const trimmed = term.trim();
 
@@ -73,11 +89,14 @@ export function HomePage() {
   return (
     <main className="mx-auto w-full max-w-3xl space-y-8">
       <section className="space-y-4">
-        <SearchForm value={term} onChange={handleTermChange} />
+        <SearchForm
+          value={term}
+          onChange={handleTermChange}
+          onSubmit={handleSearchSubmit}
+        />
         <PlatformSelector
           value={selectedPlatform}
           onSelect={handlePlatformSelect}
-          disabled={isLoading}
         />
         {platformWarning ? (
           <p className="text-left text-sm text-amber-700" role="alert">

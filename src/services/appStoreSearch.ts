@@ -108,7 +108,7 @@ export async function searchApps(
     return [];
   }
 
-  const { entity, platformLabel } = ENTITY_BY_PLATFORM[platform];
+  const { platformLabel } = ENTITY_BY_PLATFORM[platform];
   const url = buildSearchUrl(trimmed, platform);
   const response = await fetchJsonp(url, { timeout: 15000 });
   const data = (await response.json()) as iTunesSearchResponse;

@@ -106,6 +106,40 @@ describe("HomePage", () => {
     expect(appStoreSearch.searchApps).not.toHaveBeenCalled();
   });
 
+  it("runs a search when Enter is pressed with a platform already selected", async () => {
+    vi.mocked(appStoreSearch.searchApps).mockResolvedValue([]);
+
+    const user = userEvent.setup();
+    renderHomePage();
+
+    await user.type(screen.getByLabelText(/enter an app name below/i), "safari");
+    await user.click(screen.getByRole("radio", { name: /^iphone$/i }));
+
+    await waitFor(() => {
+      expect(appStoreSearch.searchApps).toHaveBeenCalledWith("safari", "iphone");
+    });
+
+    vi.mocked(appStoreSearch.searchApps).mockClear();
+
+    await user.type(screen.getByLabelText(/enter an app name below/i), "{Enter}");
+
+    await waitFor(() => {
+      expect(appStoreSearch.searchApps).toHaveBeenCalledWith("safari", "iphone");
+    });
+  });
+
+  it("warns when Enter is pressed without a selected platform", async () => {
+    const user = userEvent.setup();
+    renderHomePage();
+
+    await user.type(screen.getByLabelText(/enter an app name below/i), "safari{Enter}");
+
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      /select a platform to run your search/i,
+    );
+    expect(appStoreSearch.searchApps).not.toHaveBeenCalled();
+  });
+
   it("does not overwrite newer results with a stale response", async () => {
     let resolveFirst: ((value: AppSearchResult[]) => void) | undefined;
     let resolveSecond: ((value: AppSearchResult[]) => void) | undefined;
